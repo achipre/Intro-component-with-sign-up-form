@@ -1,6 +1,20 @@
+import { useForm } from 'react-hook-form'
+import IconError from './assets/icon-error.svg'
 import './App.css'
 
 function App () {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors }
+  } = useForm()
+  const handelEvent = () => {
+    document.querySelector('#firstname').focus()
+  }
+  const sendInfo = () => {
+    reset()
+  }
   return (
     <main className="principal">
       <aside className="principal-text">
@@ -11,14 +25,76 @@ function App () {
         </p>
       </aside>
       <aside className="principal-form">
-        <button className="call-to-action">
+        <button onClick={handelEvent} className="call-to-action">
           <span>Try it free 7 days</span> then $20/mo. thereafter
         </button>
-        <form>
-          <input type="text" placeholder="First Name" />
-          <input type="text" placeholder="Last Name" />
-          <input type="email" placeholder="Email Address" />
-          <input type="password" placeholder="Password" />
+        <form onSubmit={handleSubmit(sendInfo)}>
+          <div className="inputFiel">
+            <input
+              {...register('first_name', { required: true })}
+              id="firstname"
+              type="text"
+              placeholder="First Name"
+            />
+            {errors?.first_name?.type === 'required' && (
+              <>
+                <img className="iconError" src={IconError} alt="Icon Error" />
+                <p className="errorsLegend">First Name cannot be empty</p>
+              </>
+            )}
+          </div>
+          <div className="inputFiel">
+            <input
+              {...register('last_name', { required: true })}
+              id="lastname"
+              type="text"
+              placeholder="Last Name"
+            />
+            {errors?.last_name?.type === 'required' && (
+              <>
+                <img className="iconError" src={IconError} alt="Icon Error" />
+                <p className="errorsLegend">Last Name cannot be empty</p>
+              </>
+            )}
+          </div>
+          <div className="inputFiel">
+            <input
+              {...register('email', {
+                required: true,
+                pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+              })}
+              id="email"
+              placeholder="Email Address"
+            />
+            {errors?.email?.type === 'required' && (
+              <>
+                <img className="iconError" src={IconError} alt="Icon Error" />
+                <p className="errorsLegend">Email cannot be empty</p>
+              </>
+            )}
+            {errors?.email?.type === 'pattern' && (
+              <>
+                <img className="iconError" src={IconError} alt="Icon Error" />
+                <p className="errorsLegend">Looks like this is not an email</p>
+              </>
+            )}
+          </div>
+          <div className="inputFiel">
+            <input
+              {...register('password', {
+                required: true
+              })}
+              id="password"
+              type="password"
+              placeholder="Password"
+            />
+            {errors?.password?.type === 'required' && (
+              <>
+                <img className="iconError" src={IconError} alt="Icon Error" />
+                <p className="errorsLegend">Password cannot be empty</p>
+              </>
+            )}
+          </div>
           <input type="submit" value="Claim your free trial" />
           <p className="terminos">
             By clicking the button, you are agreeing to our <span>Terms and Services</span>

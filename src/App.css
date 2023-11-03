@@ -34,6 +34,7 @@
   gap: 1.4rem;
 }
 .principal-form .call-to-action{
+  cursor: pointer;
   font-family: 'Poppins', sans-serif;
   border: none;
   background-color: var(--blue);
@@ -45,6 +46,9 @@
   font-size: .91rem;
   line-height: 1.7;
   box-shadow: 0 8px 0 #00000020;
+}
+.principal-form .call-to-action:hover {
+  background-color: rgb(83, 71, 157);
 }
 .principal-form .call-to-action span {
   font-weight: 600;
@@ -60,7 +64,11 @@ form{
   gap: .9rem;
   box-shadow: 0 8px 0 #00000020;
 }
+.inputFiel{
+  position: relative;
+}
 form input {
+  width: 100%;
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
   padding: .97rem;
@@ -72,6 +80,7 @@ form input:focus{
   outline: 1px solid var(--blue);
 }
 form input[type='submit'] {
+  cursor: pointer;
   text-transform: uppercase;
   padding-top: 1.2rem;
   padding-bottom: .72rem;
@@ -81,6 +90,22 @@ form input[type='submit'] {
   font-weight: 500;
   border: none;
   box-shadow: 0 1px 1px #000;
+}
+form input[type='submit']:hover {
+  background-color: rgb(68, 215, 151);
+}
+form .iconError{
+  position: absolute;
+  top: 14px;
+  width: 24px;
+  right: 24px;
+}
+form .errorsLegend{
+  text-align: right;
+  color: var(--red);
+  font-size: .7rem;
+  margin-top: 6px;
+  font-style: italic;
 }
 form .terminos{
   color: var(--grayish-blue);

@@ -1,8 +1,8 @@
 :root {
   font-family: 'Poppins', sans-serif;
   --red: hsl(0, 100%, 74%);
-  --green: hsl(154, 59%, 51%);
-  --blue: hsl(248, 32%, 49%);
+  --green: #38cc8c;
+  --blue: #5f54a6;
   --grayish-blue: hsl(246, 25%, 77%);
   --dark-blue: hsl(249, 10%, 26%);
 }
