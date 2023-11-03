@@ -31,6 +31,7 @@ function App () {
         <form onSubmit={handleSubmit(sendInfo)}>
           <div className="inputFiel">
             <input
+              className={errors?.first_name?.type === 'required' ? 'errorInput' : ''}
               {...register('first_name', { required: true })}
               id="firstname"
               type="text"
@@ -45,6 +46,7 @@ function App () {
           </div>
           <div className="inputFiel">
             <input
+              className={errors?.first_name?.type === 'required' ? 'errorInput' : ''}
               {...register('last_name', { required: true })}
               id="lastname"
               type="text"
@@ -59,6 +61,11 @@ function App () {
           </div>
           <div className="inputFiel">
             <input
+              className={
+                errors?.first_name?.type === 'required' || errors?.first_name?.type === 'pattern'
+                  ? 'errorInput'
+                  : ''
+              }
               {...register('email', {
                 required: true,
                 pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
@@ -81,6 +88,7 @@ function App () {
           </div>
           <div className="inputFiel">
             <input
+              className={errors?.first_name?.type === 'required' ? 'errorInput' : ''}
               {...register('password', {
                 required: true
               })}
